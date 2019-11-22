@@ -1,0 +1,13 @@
+<view class="cartControll">
+  <view class="layout">
+    <block wx:if="{{num > 0}}">
+      <view class="left decrease"  bindtap="decrease">
+        <text class="iconfont icon-minus-square" style='font-size:40rpx;color:#fb56ba;'></text>
+      </view>
+      <view class="center">{{num}}</view>
+    </block>
+    <view class="right add" bindtap="add">
+      <text class="iconfont icon-plus-circle" style='font-size:40rpx;color:#fb56ba;'></text>
+    </view>
+  </view>
+</view>

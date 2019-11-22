@@ -1,0 +1,45 @@
+<!--pages/cart/cart.wxml-->
+<view class="container" style="min-height:{{minHeight}}px">
+  <view class="mainWrapper">
+    <block wx:for="{{cartPdList}}" wx:key="{{index}}">
+      <view class="item" wx:if="{{item.num > 0}}" bindtap="goToPage" data-index="{{index}}">
+        <view class="itemWrapper">
+          <view class="left">
+            <image src="{{item.imgUrl}}" mode="widthFix"></image>
+          </view>
+          <view class="center">
+            <view class="top">
+              <text class="name">{{item.name}}</text>
+            </view>
+            <view class="bottom">
+              <view class="price">¥
+                <text class="price-num">{{item.price}}</text>
+              </view>
+              <view class="num-control">
+                <view class="minus" catchtap="decrease" data-index="{{index}}">
+                  <text class="iconfont icon-minus-square" style='font-size:40rpx;color:#009966;'></text>
+                </view>
+                <view class="num">{{item.num}}</view>
+                <view class="plus" catchtap="increase" data-index="{{index}}">
+                  <text class="iconfont icon-plus-circle" style='font-size:40rpx;color:#009966;'></text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="right">
+            <text class="iconfont icon-arrow" style='font-size:80rpx;color:grey;line-height:200rpx;'></text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="bottomBar">
+    <view class="total">
+      <text class="price">合计: <text>{{totalNum}}</text> 元
+      </text>
+    </view>
+    <view class="goToPay" bindtap="goToPay">
+    <text>去结算</text>
+    </view>
+  </view>
+</view>

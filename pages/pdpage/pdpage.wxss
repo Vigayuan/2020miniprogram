@@ -1,0 +1,149 @@
+/* pages/pdpage/pdpage.wxss */
+
+.container {
+  width: 100%;
+}
+
+.scrollX {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 104rpx;
+  background: #4a4a4a;
+  z-index: 20;
+}
+
+.scrollX-item {
+  display: inline-block;
+  white-space: normal;
+  width: 60rpx;
+  height: 64rpx;
+  color: #ddd;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  text-align: center;
+  vertical-align: top;
+  padding: 20rpx 10rpx;
+}
+
+.selected {
+  background: #fc0;
+  color: #333;
+}
+
+.context {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 104rpx;
+}
+
+.context .scrollY-left {
+  width: 200rpx;
+  background: #eee;
+}
+
+.context .scrollY-left .inner {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.context .scrollY-left scroll-view {
+  padding: 20rpx 0;
+}
+
+.context .scrollY-left scroll-view .scrollY-item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scrollY-left .scrollY-item {
+  display: inline-block;
+  white-space: normal;
+  width: 200rpx;
+  height: 80rpx;
+  color: #666;
+  font-size: 24rpx;
+  line-height: 80rpx;
+  text-align: center;
+  vertical-align: top;
+}
+
+.context .scrollY-right {
+  flex: 1 1 auto;
+  background: #f6f6f6;
+}
+
+.context .scrollY-right .inner {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.context .scrollY-right scroll-view {
+  padding: 20rpx 0;
+}
+
+.scrollY-right .scrollY-item {
+  box-sizing: border-box;
+  display: inline-block;
+  white-space: normal;
+  width: 100%;
+  height: 229rpx;
+  color: #666;
+  vertical-align: top;
+  background: #fff;
+  padding: 10rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.scrollY-right .scrollY-item .itemWrapper {
+  display: flex;
+}
+
+.scrollY-right .scrollY-item .itemWrapper .left {
+  width: 200rpx;
+}
+
+.scrollY-right .scrollY-item .itemWrapper .left image {
+  width: 200rpx;
+}
+
+.scrollY-right .scrollY-item .itemWrapper .right {
+  position: relative;
+  flex: 1;
+  text-align: left;
+  margin-left: 10rpx;
+}
+
+.scrollY-right .scrollY-item .itemWrapper .right .pdName {
+  margin: 20rpx 0 10rpx 0;
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 40rpx;
+}
+
+.scrollY-right .scrollY-item .itemWrapper .right .pdDesc {
+  font-size: 24rpx;
+  line-height: 32rpx;
+  color: #999;
+}
+
+.scrollY-right .scrollY-item .itemWrapper .right .pdPrice {
+  position: absolute;
+  top: 150rpx;
+  left: 0;
+  font-size: 40rpx;
+  font-weight: bold;
+  line-height: 40rpx;
+  color: #d00;
+}
+
+.scrollY-right .scrollY-item .itemWrapper .right .cartControllWrapper {
+  position: absolute;
+  top: 150rpx;
+  right: 20rpx;
+}

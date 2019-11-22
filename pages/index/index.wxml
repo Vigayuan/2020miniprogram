@@ -1,0 +1,86 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='topbar'>
+    <view class='left' bindtap="scan">
+      <image style='width:25px;height:25px;' src='../../images/ic_scan_white.png' mode='aspectFit'></image>
+    </view>
+    <view class='center'>
+      <view class='ic_search'>
+        <image style='width:15px;height:15px;' src='../../images/ic_search-gray.png' mode='aspectFit'></image>
+      </view>
+      <input bindtap="bindKeyInput" placeholder='搜索商品/型号' />
+    </view>
+    <view class='right' bindtap="getUserLocation">
+    <text class="iconfont icon-round_location_fill" style='font-size:50rpx;color:#ffcc00;line-height:50rpx;'></text>
+    </view>
+  </view>
+  <!-- swiper -->
+  <view class='swiper'>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorColor}}" indicator-active-color='{{indicatorActiveColor}}'>
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item >
+          <image bindtap="goToPdPage" src="{{item}}" id="{{index}}" mode="widthFix" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- scroll -->
+  <view class='scroll'>
+    <scroll-view scroll-x='true' scroll-left="100" scroll-top="400" bindscroll="scrollChange">
+      <view class="scroll-item" id="ic_one" wx:for="{{scrollInfo}}" wx:key="{{item.icTop_title}}">
+        <view class='inner'>
+          <view class='img'>
+            <image src='{{item.icTop}}' mode='widthFix'></image>
+          </view>
+          <view>{{item.icTop_title}}</view>
+        </view>
+        <view class='inner' wx:if="{{item.icBottom}}">
+          <view class='img'>
+            <image src='{{item.icBottom}}' mode='widthFix'></image>
+          </view>
+          <view>{{item.icBottom_title}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- four category -->
+  <view class='category'>
+    <view class='inner' wx:for='{{category}}' wx:key="index">
+      <view>
+        <image src='{{item.img}}' mode='widthFix' style='width:112rpx;'></image>
+      </view>
+      <view>
+        {{item.title}}</view>
+    </view>
+  </view>
+  <view class='banner-m'>
+    <image src='../../images/banner-middle.png' mode='widthFix'></image>
+  </view>
+  <view class='banner-lr'>
+    <view class='banner-l'>
+      <image src='../../images/banner-left.jpg' mode='widthFix'></image>
+    </view>
+    <view class='banner-r'>
+      <image src='../../images/banner-right.jpg' mode='widthFix'></image>
+    </view>
+  </view>
+  <view class='pdTitle'>
+    热门商品
+  </view>
+  <view >
+    <view class='tabArea'>
+      <view class='tabs-box'>
+        <block wx:for="{{popularPd}}" wx:key="index">
+          <view class='tabs-item {{tabSelectedIdex == item.id ? "selected" : ""}}' bindtap="onTabSelected" data-index='{{item.id}}'>{{item.title}}</view>
+        </block>
+      </view>
+      <view class='pdDetail-box'wx:for="{{popularPd}}" wx:key="index">
+        <view hidden='{{tabSelectedIdex != item.id}}' bindtap="gotoDetail">
+            <image src='{{item.img}}' mode='widthFix'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+</view>

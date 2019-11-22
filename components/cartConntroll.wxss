@@ -1,0 +1,22 @@
+@import"/style/iconfont.wxss";
+.cartControll{
+  width:120rpx;
+  height: 40rpx;
+}
+.cartControll .layout{
+  display: flex;
+  justify-content: flex-end;
+}
+.cartControll .layout .left{
+  width: 40rpx;
+  height: 100%;
+}
+.cartControll .layout .center{
+  width: 40rpx;
+  height: 100%;
+  text-align: center;
+}
+.cartControll .layout .right{
+  width: 40rpx;
+  height: 100%;
+}

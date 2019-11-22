@@ -1,0 +1,269 @@
+/* pages/mine/mine.wxss */
+
+.container {
+  position: relative;
+  background: #f0f0f0;
+  z-index: 0;
+}
+
+.top {
+  display: flex;
+  width: 100%;
+  padding: 40rpx 0 200rpx;
+  background-image: linear-gradient(to right, #ffede3, #fbd5e2);
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.avatar {
+  width: 130rpx;
+  margin-left: 5%;
+}
+
+.nickName {
+  height: 50rpx;
+  font-size: 40rpx;
+  line-height: 50rpx;
+  text-align: center;
+  margin: 0 10rpx 0 20rpx;
+}
+
+.vipMember {
+  width: 120rpx;
+  height: 34rpx;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  text-align: center;
+  color: #999;
+  border: 1rpx solid #999;
+  border-radius: 17rpx;
+}
+
+.mainContent {
+  width: 90%;
+  overflow: hidden;
+  margin-top: -180rpx;
+  /* background: #ffffff;
+  border-radius: 20rpx; */
+}
+
+.mainContent .topInfo {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  height: 80rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  color: #4c382c;
+  background: rgba(255, 255, 255, 0.6);
+  padding-left: 30rpx;
+  margin-bottom: -40rpx;
+  border-radius: 20rpx 20rpx 0 0;
+  z-index: 3;
+}
+
+.mainContent .vipCoupon {
+  position: relative;
+  width: 100%;
+}
+
+.mainContent .vipCoupon::after {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 200%;
+  height: 180rpx;
+  top: 80rpx;
+  left: -50%;
+  z-index: 2;
+  background-image: linear-gradient(to right, #777174, #333);
+  border-bottom-left-radius: 80%;
+  border-bottom-right-radius: 80%;
+}
+
+.mainContent .vipCoupon .layoutTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #eed593;
+  padding: 20rpx 0;
+  background-image: linear-gradient(to right, #777174, #333);
+  border-top-right-radius: 20rpx;
+  border-top-left-radius: 20rpx;
+}
+
+.mainContent .vipCoupon .layoutTop .left {
+  font-size: 28rpx;
+  line-height: 28rpx;
+  margin-left: 30rpx;
+}
+
+.mainContent .vipCoupon .layoutTop .right {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #333;
+  background: #eed593;
+  height: 40rpx;
+  padding: 0 20rpx;
+  border-radius: 20rpx;
+  margin-right: 30rpx;
+}
+
+.mainContent .vipCoupon .layoutBottom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #eed593;
+  padding: 30rpx;
+  z-index: 5;
+}
+
+.mainContent .vipCoupon .layoutBottom .item {
+  width: 25%;
+  height: 40rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  margin: 10rpx 0;
+  z-index: 3;
+}
+
+.mainContent .listOptions {
+  display: flex;
+  width: 100%;
+  background: #fff;
+  padding: 40rpx 0;
+  margin: 20rpx 0;
+  border-radius: 20rpx;
+}
+
+.mainContent .listOptions .inner {
+  width: 25%;
+  text-align: center;
+  border-right: 1px solid #999;
+}
+
+.mainContent .listOptions .inner:last-child {
+  border-right: none;
+}
+
+.mainContent .listOptions .inner text {
+  display: block;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.mainContent .listOptions .inner .num {
+  font-weight: bold;
+}
+
+.mainContent .orderMenu {
+  width: 100%;
+  background: #fff;
+  padding: 40rpx 0;
+  margin: 20rpx 0;
+  border-radius: 20rpx;
+}
+
+.mainContent .orderMenu .inner {
+  display: flex;
+  width: 100%;
+  background: #fff;
+  border-radius: 20rpx;
+  justify-content: space-between;
+}
+
+.mainContent .orderMenu .inner .title {
+  display: block;
+  font-size: 36rpx;
+  line-height: 48rpx;
+  font-weight: bold;
+  margin-left: 40rpx;
+}
+
+.mainContent .orderMenu .inner .allOrder {
+  display: block;
+  font-size: 28rpx;
+  line-height: 48rpx;
+  margin-right: 40rpx;
+}
+
+.mainContent .orderMenu .inner .item {
+  width: 20%;
+  margin: 40rpx 0 0 0;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+}
+
+.mainContent .orderMenu .inner .item text {
+  display: block;
+}
+
+.mainContent .orderMenu .inner .item .iconfont {
+  margin-bottom: 20rpx;
+}
+
+.mainContent .serverMenu {
+  width: 100%;
+  background: #fff;
+  padding: 40rpx 0;
+  margin: 20rpx 0;
+  border-radius: 20rpx;
+}
+
+.mainContent .serverMenu .inner {
+  display: flex;
+  width: 100%;
+  background: #fff;
+  border-radius: 20rpx;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.mainContent .serverMenu .inner .title {
+  display: block;
+  font-size: 36rpx;
+  line-height: 48rpx;
+  font-weight: bold;
+  margin-left: 40rpx;
+}
+
+.mainContent .serverMenu .inner .item {
+  width: 33%;
+  margin: 40rpx 0 20rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+}
+
+.mainContent .serverMenu .inner .item text {
+  display: block;
+}
+
+.mainContent .serverMenu .inner .item .iconfont {
+  margin-bottom: 20rpx;
+}
+
+/* .mainContent .item{
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 30rpx 0 30rpx 20rpx;
+  border-bottom: 1rpx solid #dddddd;
+}
+.mainContent .item:last-child{
+  border-bottom: none;
+}
+.mainContent .item image{
+  width: 40rpx;
+}
+.mainContent .item .icon{
+  width:10%;
+}
+.mainContent .item .name{
+  width:75%;
+}
+.mainContent .item .arrow{
+  width:10%;
+} */

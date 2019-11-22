@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='topbar'>
+    <view class='left' bindtap="goBack">
+    <text class="iconfont icon-24gf-backwardCircle" style='font-size:50rpx;color:#ffcc00;line-height:50rpx;'></text>
+    </view>
+    <view class='center'>
+      <view class='ic_search'>
+        <image style='width:15px;height:15px;' src='../../images/ic_search-gray.png' mode='aspectFit'></image>
+      </view>
+      <input bindinput="bindKeyInput" type="text" focus='{{true}}' placeholder='搜索商品/型号' value="{{keywords}}"  data-finalkey="{{keywords}}" bindblur="comfirmSearch" />
+    </view>
+    <view class='right' bindtap="comfirmSearch" data-finalkey="{{keywords}}">
+          <text class="iconfont icon-search" style='font-size:50rpx;color:#ffcc00;line-height:50rpx;'></text>
+    </view>
+  </view>
+  <view class="histRecomm">
+    <view wx:if="{{history.length > 0 }}">
+      <text class="title">搜索历史</text>
+      <block wx:for="{{history}}" wx:key="{{index}}">
+        <text class="item" bindtap="searchThis" data-keywords="{{item}}">{{item}}</text>
+      </block>
+    </view>
+    <view class="recommend">
+      <text class="title">推荐商品</text>
+      <block wx:for="{{recommend}}" wx:key="{{index}}">
+        <text class="item" bindtap="searchThis" data-keywords="{{item}}">{{item}}</text>
+      </block>
+    </view>
+  </view>
+
+</view>

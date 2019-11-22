@@ -1,0 +1,45 @@
+<!--pages/pdpage/pdpage.wxml-->
+<view class="container">
+  <!-- scroll -->
+  <view class='scrollX'>
+    <scroll-view scroll-x='true' style="width:100%;white-space:nowrap" bindscroll="pdScrollChange" scroll-left="{{leftDist}}" scroll-with-animation="true">
+      <view class='scrollX-item {{pickIndex == index? "selected" : ""}}' wx:for="{{scrollInfo}}" wx:key="{{index}}" bindtap="pickTap" data-index="{{index}}">
+        <view class="name">
+          {{item.name}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="context" style="height:{{allHeight*2-102}}rpx">
+    <view class="scrollY-left">
+      <view class="inner">
+        <scroll-view scroll-y="true" scroll-top="0rpx">
+          <view class='scrollY-item {{secondPickIndex == index? "selected" : ""}}' wx:for="{{sencondData}}" wx:key="{{index}}" bindtap="secondPickTap" data-index="{{index}}">
+            {{item.name}}
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <view class="scrollY-right">
+      <view class="inner">
+        <scroll-view scroll-y="true" scroll-top="0rpx">
+          <view class='scrollY-item' wx:for="{{thirdData}}" wx:key="{{index}}" bindtap="thirdPickTap" data-index="{{index}}">
+            <view class="itemWrapper">
+              <view class="left">
+                <image src="{{item.imgUrl}}" mode="widthFix" />
+              </view>
+              <view class="right">
+                <view class="pdName">{{item.name}}</view>
+                <view class="pdDesc">{{item.desc}}</view>
+                <view class="pdPrice">¥{{item.price}}</view>
+                <view class="cartControllWrapper">
+                <cartControll bindaddPdNum="addPdNum" binddecreasePdNum="decreasePdNum" data-item="{{item}}" num = "{{item.num}}"></cartControll>
+                </view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+</view>
