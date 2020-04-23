@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "购物车"
+  "usingComponents": {
+    "cartControll": "/components/cartConntroll"
+  },
+  "navigationBarTitleText": "myCart"
 }

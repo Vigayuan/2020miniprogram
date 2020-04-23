@@ -1,0 +1,96 @@
+/* pages/count/count.wxss */
+
+.wrapper {
+  height: 100vh;
+  background: #f0f0f0;
+}
+
+.wrapper .top {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background: #fff;
+  padding: 10rpx 0;
+}
+
+.wrapper .top .left {
+  width: 75%;
+}
+
+.wrapper .top .left input {
+  background: #f0f0f0;
+  height: 60rpx;
+  font-size: 24rpx;
+  line-height: 60rpx;
+  border-radius: 6rpx;
+  padding: 0 20rpx;
+}
+
+.wrapper .top .right {
+  width: 15%;
+}
+
+.wrapper .top .right text {
+  height: 60rpx;
+  font-size: 36rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.wrapper .countWrapper {
+  box-sizing: border-box;
+  background: #eee;
+}
+
+.wrapper .countWrapper .inner {
+  display: flex;
+  box-sizing: border-box;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 10rpx;
+  background: #fff;
+  margin-top: 20rpx;
+  padding: 10rpx;
+}
+
+.wrapper .countWrapper .inner .left {
+  width: 40%;
+  height: 200rpx;
+  text-align: center;
+  border: 1px dashed #d00;
+  border-radius: 10rpx;
+  margin-right: 30rpx;
+}
+
+.wrapper .countWrapper .inner text {
+  display: inline-block;
+}
+
+.wrapper .countWrapper .inner .left .num {
+  font-size: 30rpx;
+  line-height: 200rpx;
+  font-weight: bold;
+  color: #d00;
+}
+
+.wrapper .countWrapper .inner .left .num text {
+  font-size: 60rpx;
+}
+
+.wrapper .countWrapper .inner .right .title {
+  font-size: 36rpx;
+  font-weight: bold;
+  line-height: 50rpx;
+}
+
+.wrapper .countWrapper .inner .right .des {
+  font-size: 28rpx;
+  line-height: 32rpx;
+  color: #999;
+}
+
+.wrapper .countWrapper .inner .right .time {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #999;
+}

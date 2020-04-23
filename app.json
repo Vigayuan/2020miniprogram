@@ -1,11 +1,17 @@
 {
   "pages": [
-    "pages/pdpage/pdpage",
     "pages/index/index",
-    "pages/mine/mine",
+    "pages/pdpage/pdpage",
     "pages/cart/cart",
+    "pages/mine/mine",
     "pages/search/search",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/count/count",
+    "pages/coupon/coupon",
+    "pages/set/set",
+    "pages/address/address",
+    "pages/addadress/addadress",
+    "pages/poster/poster"
   ],
   "permission": {
     "scope.userLocation": {
@@ -15,35 +21,35 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "米思米闪购商城",
+    "navigationBarTitleText": "viga商城",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#cdcdcd",
-    "selectedColor": "#003399",
+    "selectedColor": "#f85197",
     "borderStyle": "black",
     "list": [
       {
-        "selectedIconPath": "images/ic_home-selected.png",
-        "iconPath": "images/ic_home.png",
+        "selectedIconPath": "images/home-selected.png",
+        "iconPath": "images/home.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "selectedIconPath": "images/ic_class-selected.png",
-        "iconPath": "images/ic_class.png",
+        "selectedIconPath": "images/class-selected.png",
+        "iconPath": "images/class.png",
         "pagePath": "pages/pdpage/pdpage",
         "text": "商品分类"
       },
       {
-        "selectedIconPath": "images/ic_cart-selected.png",
-        "iconPath": "images/ic_cart.png",
+        "selectedIconPath": "images/cart-selected.png",
+        "iconPath": "images/cart.png",
         "pagePath": "pages/cart/cart",
         "text": "购物车"
       },
       {
-        "selectedIconPath": "images/ic_my-selected.png",
-        "iconPath": "images/ic_my.png",
+        "selectedIconPath": "images/mine-selected.png",
+        "iconPath": "images/mine.png",
         "pagePath": "pages/mine/mine",
         "text": "我的"
       }

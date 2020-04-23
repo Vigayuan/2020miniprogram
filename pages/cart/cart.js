@@ -1,4 +1,5 @@
-const app =getApp()
+const util = require('../../utils/util.js')
+const app = getApp()
 // pages/cart/cart.js
 Page({
 
@@ -7,58 +8,10 @@ Page({
    */
   data: {
     minHeight: '',
-    totalNum:0,
+    totalNum: 0,
     cartPdList: [],
-    // cartPdList: [{
-    //   src: '../../images/ic_index_mech.png',
-    //   url: '../../images/ic_index_mech.png',
-    //   name: '工厂自动阿斯顿撒多撒敖德萨所多撒',
-    //   price: 21.54,
-    //   id: 1785,
-    //   num: 1
-    // }, {
-    //     src: '../../images/ic_index_mech_screw.png',
-    //     url: '../../images/ic_index_mech_screw.png',
-    //     name: '螺丝螺帽爱仕达多撒',
-    //     price: 21.54,
-    //     id: 175275,
-    //     num: 10
-    //   }, {
-    //     src: '../../images/ic_index_el_wire.png',
-    //     url: '../../images/ic_index_el_wire.png',
-    //     name: '接线敖德萨所多撒奥',
-    //     price: 21.54,
-    //     id: 17879,
-    //     num: 10
-    //   }, {
-    //     src: '../../images/ic_index_el_control.png',
-    //     url: '../../images/ic_index_el_control.png',
-    //     name: '控制爱仕达多撒所多',
-    //     price: 21.54,
-    //     id: 143478,
-    //     num: 10
-    //   }, {
-    //     src: '../../images/ic_index_fs_machining.png',
-    //     url: '../../images/ic_index_fs_machining.png',
-    //     name: '切削奥术大师大多翁',
-    //     price: 21.54,
-    //     id: 176787,
-    //     num: 10
-    //   }, {
-    //     src: '../../images/ic_index_mold.png',
-    //     url: '../../images/ic_index_mold.png',
-    //     name: '冲压模具问题我确认山东干豆腐啊',
-    //     price: 21.54,
-    //     id: 135543,
-    //     num: 10
-    //   }, {
-    //     src: '../../images/ic_index_press.png',
-    //     url: '../../images/ic_index_press.png',
-    //     name: '塑料模具过去而同情而维特请回复多少功夫大师',
-    //     price: 21.54,
-    //     id: 17387857,
-    //     num: 10
-    //   },],
+    pdListData:[],
+    isEmpty:true
   },
 
   /**
@@ -73,7 +26,6 @@ Page({
         })
       }
     })
-    this.getPdList()
   },
 
   /**
@@ -87,14 +39,27 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      cartPdList: app.globalData.cartList,
+      pdListData: app.globalData.pdListData
+    })
+    this.getTotalNum(this.data.cartPdList)
+    if (this.data.cartPdList.length > 0){
+      this.setData({
+        isEmpty:false
+      })
+    }else{
+      this.setData({
+        isEmpty: true
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    app.globalData.pdListData = this.data.pdListData
   },
 
   /**
@@ -124,49 +89,46 @@ Page({
   onShareAppMessage: function () {
 
   },
-  goToPage:function(e){
+  goToPage: function (e) {
     var _index = e.currentTarget.dataset.index
     // wx.navigateTo({
     //   url: this.data.cartPdList[_index].url,
     // })
     console.log(this.data.cartPdList[_index].url)
   },
-  decrease: function (e) {
-    var _index = e.currentTarget.dataset.index
-    var arr = this.data.cartPdList
-    var _num = arr[_index].num
-    if (_num === 1) {
-      arr.splice(_index, 1)
-      wx.cloud.callFunction({
-        name:'decrease',
-        data:{
-          key:"953037125dd6548d01dea726379be782"
-        }
-      }).then(res => { console.log('delete:ok') }).catch(err => { console.log(err)})
-      // this.deleteData()
-    } else {
-      arr[_index].num--
-    }
-    this.getTotalNum(arr)
-    this.setData({
-      cartPdList: arr
+  goToBuy: function () {
+    wx.switchTab({
+      url: '../pdpage/pdpage',
     })
   },
-  increase: function (e) {
-    var _index = e.currentTarget.dataset.index
-    var arr = this.data.cartPdList
-    arr[_index].num++
-    this.getTotalNum(arr)
+  // 减
+  decreasePdNum: function (e) {
+    var item = e.currentTarget.dataset.item
+    this.data.cartPdList[item.sku].num--
+    this.data.pdListData[item._firstindex].childInfo[item._secondindex].childInfo[item._thirdindex].num--
     this.setData({
-      cartPdList: arr
+      cartPdList: this.data.cartPdList
     })
+
+    this.getTotalNum(this.data.cartPdList)
   },
-  getTotalNum:function(arr){
+  // 加
+  addPdNum: function (e) {
+    var item = e.currentTarget.dataset.item
+    this.data.cartPdList[item.sku].num++
+    this.data.pdListData[item._firstindex].childInfo[item._secondindex].childInfo[item._thirdindex].num++
+    this.setData({
+      cartPdList: this.data.cartPdList
+    })
+    this.getTotalNum(this.data.cartPdList)
+  },
+  // 计算总价
+  getTotalNum: function (arr) {
     var totalPrice = 0;
     console.log(arr)
-    arr.forEach(item=>{
-      if (item.price){
-      totalPrice += item.price*item.num
+    arr.forEach(item => {
+      if (item && item.price) {
+        totalPrice += item.price * item.num
       }
     })
     totalPrice = totalPrice.toFixed(2)
@@ -175,36 +137,7 @@ Page({
       totalNum: totalPrice
     })
   },
-  goToPay:function(){
-    console.log(app.globalData.cartList)
-    for (let i = 0; i < app.globalData.cartList.length ; i ++){
-      if (app.globalData.cartList[i]){
-        this.saveToDb(app.globalData.cartList[i])
-      }
-    }
-    wx.showModal({
-      title: '出错了',
-      content: '还没开发支付页面',
-    })
-  },
-  getPdList:function(){
-    // var that = this
-    // let db = wx.cloud.database({
-    //   env:"viga-s8qsn"
-    // })
-    // let cartList = db.collection('cartList')
-    // cartList.get().then(res => {
-    //   console.log(res)
-    //   that.setData({
-    //     cartPdList:res.data
-    //   })
-    //   that.getTotalNum(that.data.cartPdList)
-    // })
-    this.setData({
-      cartPdList: app.globalData.cartList
-    })
-    console.log(this.data.cartPdList)
-  },
+  // 保存至数据库
   saveToDb: function (data) { //保存至数据库
     let db = wx.cloud.database({
       env: "viga-s8qsn"
@@ -218,4 +151,144 @@ Page({
       console.log(err)
     })
   },
+  // gotopay
+  goToPay: function () {
+    var that = this;
+    wx.login({
+      success: function (res) {
+        console.log("获取login code", res.code)
+        that.getOpenId(res.code)
+      }
+    })
+  },
+  // 获取openid
+  getOpenId: function (code) {
+    var that = this
+    wx.request({
+      url: 'https://api.weixin.qq.com/sns/jscode2session',
+      data:{
+        appid:'wx1162079bf9bf01af',
+        secret:'aacc994199fe9ffc2619cf6f354572b4',
+        js_code:code,
+        grant_type:'authorization_code'
+      },
+      success: function (res) {
+        console.log("获取openid", res);
+        console.log(res.data.openid);
+        // 调用支付接口
+        // that.unitedPayRequest(res.data.openid);
+      },
+      fail: function () {
+        wx.showModal({
+          title: '出错了',
+          content: '获取openId失败',
+        })
+      }
+    })
+  },
+  // 支付接口
+  unitedPayRequest: function (openid) {
+    var that = this;
+    //统一支付签名
+    var appid = ''; //appid必填
+    var body = ''; //商品名必填
+    var mch_id = ''; //商户号必填
+    var nonce_str = util.randomString(); //随机字符串，不长于32位。  
+    var notify_url = ''; //通知地址必填
+    var total_fee = parseInt(0.01 * 100); //价格，这是一分钱
+    var trade_type = "JSAPI";
+    var key = ''; //商户key必填，在商户后台获得
+    var out_trade_no = ''; //自定义订单号必填
+
+    var unifiedPayment = 'appid=' + appid + '&body=' + body + '&mch_id=' + mch_id + '&nonce_str=' + nonce_str + '&notify_url=' + notify_url + '&openid=' + openid + '&out_trade_no=' + out_trade_no + '&total_fee=' + total_fee + '&trade_type=' + trade_type + '&key=' + key;
+    console.log("unifiedPayment", unifiedPayment);
+    var sign = md5.md5(unifiedPayment).toUpperCase();
+    console.log("签名md5", sign);
+
+    //封装统一支付xml参数
+    var formData = "<xml>";
+    formData += "<appid>" + appid + "</appid>";
+    formData += "<body>" + body + "</body>";
+    formData += "<mch_id>" + mch_id + "</mch_id>";
+    formData += "<nonce_str>" + nonce_str + "</nonce_str>";
+    formData += "<notify_url>" + notify_url + "</notify_url>";
+    formData += "<openid>" + openid + "</openid>";
+    formData += "<out_trade_no>" + that.data.ordernum + "</out_trade_no>";
+    formData += "<total_fee>" + total_fee + "</total_fee>";
+    formData += "<trade_type>" + trade_type + "</trade_type>";
+    formData += "<sign>" + sign + "</sign>";
+    formData += "</xml>";
+    console.log("formData", formData);
+
+    // 统一支付
+    wx.request({
+      url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
+      method: 'POST',
+      head: 'application/x-www-form-urlencoded',
+      data: formData,
+      success: function (res) {
+        console.log('返回商户', res.data)
+        var result_code = util.getXMLNodeValue('result_code', res.data.toString("utf-8"));
+        var resultCode = result_code.split('[')[2].split(']')[0];
+        if (resultCode == 'FAIL') {
+          var err_code_des = util.getXMLNodeValue('err_code_des', res.data.toString("utf-8"));
+          var errDes = err_code_des.split('[')[2].split(']')[0];
+          wx.showToast({
+            title: errDes,
+            icon: 'none',
+            duration: 3000
+          })
+        } else {
+          //发起支付
+          var prepay_id = util.getXMLNodeValue('prepay_id', res.data.toString("utf-8"));
+          var tmp = prepay_id.split('[');
+          var tmp1 = tmp[2].split(']');
+          //签名  
+          var key = ''; //商户key必填，在商户后台获得
+          var appId = ''; //appid必填
+          var timeStamp = util.createTimeStamp();
+          var nonceStr = util.randomString();
+          var stringSignTemp = "appId=" + appId + "&nonceStr=" + nonceStr + "&package=prepay_id=" + tmp1[0] + "&signType=MD5&timeStamp=" + timeStamp + "&key=" + key;
+          console.log("签名字符串", stringSignTemp);
+          var sign = md5.md5(stringSignTemp).toUpperCase();
+          console.log("签名", sign);
+          var param = {
+            "timeStamp": timeStamp,
+            "package": 'prepay_id=' + tmp1[0],
+            "paySign": sign,
+            "signType": "MD5",
+            "nonceStr": nonceStr
+          }
+          console.log("param小程序支付接口参数", param);
+          that.processPay(param);
+        }
+      }
+    })
+  },
+  // 支付
+  processPay: function (param) {
+    wx.requestPayment({
+      timeStamp: param.timeStamp,
+      nonceStr: param.nonceStr,
+      package: param.package,
+      signType: param.signType,
+      paySign: param.paySign,
+      success: function (res) {
+        wx.showModal({
+          title: '支付成功',
+          content: '您将在“微信支付”官方号中收到支付凭证',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) { } else if (res.cancel) { }
+          }
+        })
+      },
+      fail: function () {
+        wx.showModal({
+          title: '支付失败',
+          content: '请重新尝试',
+        })
+      }
+    })
+  }
 })

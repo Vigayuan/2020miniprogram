@@ -6,58 +6,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pickIndex:0,
-    secondPickIndex:0,
-    thirdPickIndex:0,
-    scrollInfo: '',
-    sencondData:'',
-    thirdData:'',
-    allHeight: '', 
-    leftDist:0,
-    skuList:[]//存储sku
+    pickIndex:0,//顶部tab栏index
+    secondPickIndex:0,//左边栏的index
+    pdListData: '',//请求到的商品数据 [{[{[]}]}]
+    // sencondData:'',//次一级数据[{[]}]
+    // thirdData:'',//最底层实际数据[]
+    allHeight: '', //设备高度 去除底部tabbar
   },
-
-  pdScrollChange: function (e) {
-    // console.log(e)
-    // console.log(e.detail)
-    // this.setData({
-    //   leftDist: e.detail.scrollLeft
-    // })
-  },
-  pickTap: function (e) {
+  pickTap: function (e) { //点击顶部tab
     this.setData({
-      pickIndex: e.currentTarget.dataset.index,
+      pickIndex: e.currentTarget.dataset.index
     })
-    var len = this.data.scrollInfo.length;//36
-    
-    console.log(this.data.leftDist)
+    var len = this.data.pdListData.length;//36
     this.setData({
-      sencondData: this.data.scrollInfo[this.data.pickIndex].childInfo,
-      thirdData: this.data.scrollInfo[this.data.pickIndex].childInfo[0].childInfo,
-      secondPickIndex: 0,
-      thirdPickIndex: 0
+      secondPickIndex: 0
     })
   },
-  secondPickTap: function (e){
+  secondPickTap: function (e){//点击右边tab
     this.setData({
       secondPickIndex: e.currentTarget.dataset.index,
     })
     this.setData({
-      thirdData: this.data.sencondData[this.data.secondPickIndex].childInfo,
       thirdPickIndex: 0
     })
     console.log(this.data.thirdData)
   },
-  thirdPickTap: function (e){
-    this.setData({
-      thirdPickIndex: e.currentTarget.dataset.index,
-    })
-  },
   // 增加商品
   addPdNum:function(e){
-    var sku = e.currentTarget.dataset.item.sku
-    var item = e.currentTarget.dataset.item
-    var cartList = app.globalData.cartList
+    var sku =e.currentTarget.dataset.item.sku//sku
+    console.log(sku)
+    var item = e.currentTarget.dataset.item//当前对象
+    var _firstindex = e.currentTarget.dataset.pickindex//index1
+    var _secondindex = e.currentTarget.dataset.secondpickindex//index2
+    var _thirdindex = e.currentTarget.dataset.thirdpickindex//index3
+    var cartList = app.globalData.cartList//购物车
+    item._firstindex = _firstindex
+    item._secondindex = _secondindex
+    item._thirdindex = _thirdindex
     if (!cartList[sku]){
       item.num = 1
       cartList[sku] = item
@@ -67,19 +52,28 @@ Page({
       cartList[sku] = item
       console.log(cartList)
     }
+    if (!this.data.pdListData[_firstindex].childInfo[_secondindex].childInfo[_thirdindex].num){
+      this.data.pdListData[_firstindex].childInfo[_secondindex].childInfo[_thirdindex].num = 1
+    }else{
+      this.data.pdListData[_firstindex].childInfo[_secondindex].childInfo[_thirdindex].num ++
+    }
   },
   // 减少商品
   decreasePdNum:function(e){
-    var sku = e.currentTarget.dataset.item.sku
-    var item = e.currentTarget.dataset.item
-    var cartList = app.globalData.cartList
+    var sku =e.currentTarget.dataset.item.sku  //sku
+    var item = e.currentTarget.dataset.item//当前对象
+    var _firstindex = e.currentTarget.dataset.pickindex//index1
+    var _secondindex = e.currentTarget.dataset.secondpickindex//index2
+    var _thirdindex = e.currentTarget.dataset.thirdpickindex//index3
+    var cartList = app.globalData.cartList//购物车
+    console.log(cartList)
     if (cartList[sku].num == 1) {
-      cartList.splice(cartList.indexOf(cartList[sku]),1)
+      cartList.splice(cartList.indexOf(cartList[sku]),1,null)
     } else {
       item.num = item.num - 1
       cartList[sku] = item
     }
-    console.log(cartList)
+    this.data.pdListData[_firstindex].childInfo[_secondindex].childInfo[_thirdindex].num --
   },
   
   /**
@@ -95,25 +89,9 @@ Page({
         })
         console.log(that.data.allHeight)
       }
-    })
-    this.getPdList()
+    })    
   },
-  getPdList: function () {
-    var that = this
-    let db = wx.cloud.database({
-      env: "viga-s8qsn"
-    })
-    let pdList = db.collection('pdList')
-    pdList.get().then(res => {
-      console.log(res.data)
-      that.setData({
-        scrollInfo: res.data,
-        sencondData: res.data[0].childInfo,
-        thirdData: res.data[0].childInfo[0].childInfo
-      })
-      console.log(this.data.thirdData)
-    })
-  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -125,14 +103,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      pdListData: app.globalData.pdListData
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    app.globalData.pdListData = this.data.pdListData
   },
 
   /**

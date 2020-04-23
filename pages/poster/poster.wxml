@@ -1,0 +1,5 @@
+<!--pages/poster/poster.wxml-->
+<view class="canvasWrapper" style="min-Height:100vh">
+<button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 生成我的海报 </button>
+<canvas class="canvas" canvas-id="shareCanvas" style="width:{{canvasWidth}}px;height:{{canvasHeight}}px" bindtap="saveToPhotosAlbum"></canvas>
+</view>

@@ -1,0 +1,18 @@
+<!--pages/address/address.wxml-->
+<view class="wrapper">
+  <view class="addressArea">
+    <block wx:for="{{addressList}}" wx:key="{{index}}">
+        <view class="item" bindtap="checkAddress" data-item ="{{item}}">
+          <view class="left">
+            <text class="address">{{item.address}}</text>
+            <text class="name">{{item.name}}</text>
+            <text class="phone">{{item.phone}}</text>
+          </view>
+          <view class="rght">
+          <text class="iconfont icon-notebook1" style='font-size:40rpx;line-height:100rpx;'></text>
+          </view>
+        </view>
+    </block>
+  </view>
+     <button class="addAddress" bindtap="addAddress" style="bottom:{{btnBottom}}">新增收货地址</button>
+</view>

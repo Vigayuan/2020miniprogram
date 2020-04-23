@@ -1,0 +1,172 @@
+/* pages/addadress/addadress.wxss */
+
+.wrapper {
+  background: #f0f0f0;
+}
+
+.wrapper .mainWrapper {
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.wrapper .mainWrapper .name {
+  display: flex;
+  padding:20rpx 30rpx 0 30rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.wrapper .mainWrapper .name .left {
+  width: 20%;
+}
+.wrapper .mainWrapper .name .left text{
+  font-size: 28rpx;
+  line-height: 32rpx;
+}
+
+.wrapper .mainWrapper .name .right {
+  width: 80%;
+}
+
+.wrapper .mainWrapper .name .right input {
+  width: 100%;
+  font-size: 28rpx;
+  line-height: 32rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.wrapper .mainWrapper .name .right .radio-group {
+  position: relative;
+  width: 100%;
+  padding-bottom: 20rpx;
+}
+
+.wrapper .mainWrapper .name .right .radio-group .radio {
+  border-radius: 50%;
+  width: 32rpx; /* 最好是4的倍数，不然会不在中间 */
+  height: 32rpx;
+  border: 2rpx solid #999; /* 设置边框（外圆） */
+  font-size: 0;
+  margin-right: 100rpx;
+}
+
+.wrapper .mainWrapper .name .right .radio-group .radio .wx-radio-input {
+  border-radius: 50%;
+  width: 32rpx;
+  height: 32rpx;
+  border: none;
+}
+
+.wrapper .mainWrapper .name .right .radio-group .radio .wx-radio-input.wx-radio-input-checked::before {
+  border-radius: 50%;
+  width: 28rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  font-size: 28rpx; /* 对勾大小 26rpx */
+  color: #2facff; /* 对勾颜色 */
+  background: #2facff;
+  border-color: 2facff;
+}
+
+.wrapper .mainWrapper .name .right .radio-group text {
+  position: absolute;
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+
+.wrapper .mainWrapper .name .right .radio-group text.first {
+  top: 19rpx;
+  left: 51rpx;
+}
+
+.wrapper .mainWrapper .name .right .radio-group text.last {
+  top: 19rpx;
+  left: 187rpx;
+}
+
+.wrapper .mainWrapper .phone {
+  display: flex;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.wrapper .mainWrapper .phone .left {
+  width: 20%;
+}
+.wrapper .mainWrapper .phone .left text{
+  font-size: 28rpx;
+  line-height: 32rpx;
+}
+
+.wrapper .mainWrapper .phone .right {
+  width: 80%;
+}
+
+.wrapper .mainWrapper .phone .right input {
+  width: 100%;
+  font-size: 28rpx;
+  line-height: 32rpx;
+}
+
+.wrapper .mainWrapper .location {
+  display: flex;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.wrapper .mainWrapper .location .left {
+  width: 20%;
+}
+.wrapper .mainWrapper .location .left text{
+   height: 32rpx;
+  font-size: 28rpx;
+  line-height: 32rpx;
+}
+
+.wrapper .mainWrapper .location .right {
+  display: flex;
+  width: 80%;
+}
+
+.wrapper .mainWrapper .location .right input {
+  height: 32rpx;
+  width: 100%;
+  font-size: 28rpx;
+  line-height: 32rpx;
+}
+.wrapper .mainWrapper .location .right .iconfont {
+  height: 44.78rpx;
+  line-height: 44.78rpx;
+}
+
+
+
+.wrapper .mainWrapper .doorNum {
+  display: flex;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.wrapper .mainWrapper .doorNum .left {
+  width: 20%;
+}
+.wrapper .mainWrapper .doorNum .left text{
+  font-size: 28rpx;
+  line-height: 32rpx;
+}
+
+.wrapper .mainWrapper .doorNum .right {
+  width: 80%;
+}
+
+.wrapper .mainWrapper .doorNum .right input {
+  width: 100%;
+  font-size: 28rpx;
+  line-height: 32rpx;
+}
+.wrapper .saveBtn {
+  width: 95%;
+  background: #ff5294;
+  color: #ffffff;
+  margin:100rpx auto;
+}

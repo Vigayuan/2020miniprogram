@@ -1,0 +1,27 @@
+<!--pages/count/count.wxml-->
+<view class="wrapper">
+  <view class="top">
+    <view class="left">
+      <input type="text" placeholder='请输入兑换码' data-finalkey="{{keywords}}" bindblur="comfirmSearch" />
+    </view>
+    <view class="right" bindtap="convert">
+      <text>兑换</text>
+    </view>
+  </view>
+  <view class="countWrapper">
+    <view class="inner">
+      <text class="title">我的余额</text>
+      <text class="count">¥<text class="num">0</text></text>
+      <view class="detail">
+        <view class="left">
+          <text class="title">储值余额</text>
+          <text class="count">0</text>
+        </view>
+        <view class="right">
+          <text class="title">礼金卡余额</text>
+          <text class="count">0</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

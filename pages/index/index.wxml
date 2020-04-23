@@ -2,11 +2,11 @@
 <view class="container">
   <view class='topbar'>
     <view class='left' bindtap="scan">
-      <image style='width:25px;height:25px;' src='../../images/ic_scan_white.png' mode='aspectFit'></image>
+      <image style='width:25px;height:25px;' src='cloud://viga-s8qsn.7669-viga-s8qsn-1300720582/public/ic_scan_white.png' mode='aspectFit'></image>
     </view>
     <view class='center'>
       <view class='ic_search'>
-        <image style='width:15px;height:15px;' src='../../images/ic_search-gray.png' mode='aspectFit'></image>
+        <image style='width:15px;height:15px;' src='cloud://viga-s8qsn.7669-viga-s8qsn-1300720582/public/ic_search-gray.png' mode='aspectFit'></image>
       </view>
       <input bindtap="bindKeyInput" placeholder='搜索商品/型号' />
     </view>
@@ -54,14 +54,14 @@
     </view>
   </view>
   <view class='banner-m'>
-    <image src='../../images/banner-middle.png' mode='widthFix'></image>
+    <image src='cloud://viga-s8qsn.7669-viga-s8qsn-1300720582/public/banner-middle.png' mode='widthFix'></image>
   </view>
   <view class='banner-lr'>
     <view class='banner-l'>
-      <image src='../../images/banner-left.jpg' mode='widthFix'></image>
+      <image src='cloud://viga-s8qsn.7669-viga-s8qsn-1300720582/public/banner-left.jpg' mode='widthFix'></image>
     </view>
     <view class='banner-r'>
-      <image src='../../images/banner-right.jpg' mode='widthFix'></image>
+      <image src='cloud://viga-s8qsn.7669-viga-s8qsn-1300720582/public/banner-right.jpg' mode='widthFix'></image>
     </view>
   </view>
   <view class='pdTitle'>
@@ -74,13 +74,11 @@
           <view class='tabs-item {{tabSelectedIdex == item.id ? "selected" : ""}}' bindtap="onTabSelected" data-index='{{item.id}}'>{{item.title}}</view>
         </block>
       </view>
-      <view class='pdDetail-box'wx:for="{{popularPd}}" wx:key="index">
+      <view class='pdDetail-box' wx:for="{{popularPd}}" wx:key="index">
         <view hidden='{{tabSelectedIdex != item.id}}' bindtap="gotoDetail">
             <image src='{{item.img}}' mode='widthFix'></image>
         </view>
       </view>
     </view>
   </view>
-
-
 </view>

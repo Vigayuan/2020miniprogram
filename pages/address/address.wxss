@@ -1,0 +1,35 @@
+/* pages/address/address.wxss */
+.wrapper .addressArea .item{
+  display: flex;
+  width:100%;
+  height: 100rpx;
+  padding: 10rpx 20rpx;
+  border-bottom: 1rpx solid #999999;
+}
+.wrapper .addressArea .item .left{
+  width: 90%
+}
+.wrapper .addressArea .item .left text{
+  font-size: 28rpx;
+  line-height: 50rpx;
+  color: #999999;
+}
+.wrapper .addressArea .item .left .address{
+  display: block;
+}
+.wrapper .addressArea .item .left .name{
+  margin-right: 20rpx;
+}
+.wrapper .addAddress{
+  position: fixed;
+  bottom: 0;
+  left: 2.5%;
+  width: 95%;
+  height: 80rpx;
+  font-size: 40rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  background:#ff5294;
+  color: #ffffff;
+}

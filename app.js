@@ -1,11 +1,11 @@
 //app.js
 App({
-  onLaunch: function() {
+  onLaunch: function () {
     wx.cloud.init({
       traceUser: true,
       env: 'viga-s8qsn'
     })
-
+    console.log=()=>{}
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -45,6 +45,7 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+              
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
               console.log(this.globalData.userInfo)
@@ -58,18 +59,40 @@ App({
         };
       }
     })
+    this.getPdList()
+
   },
-  onHide: function() {
-    var that = this
-    this.globalData.cartList.foreach(item => {
-      that.saveToDb(item)
-    })
+  onHide: function () {
   },
   globalData: {
     userInfo: null,
-    cartList: []
+    cartList: [],
+    defaultAds:{},
+    pdListData:[],
+    host:'http://127.0.0.1:8800',
+    addressList: [{
+      'address': '上海',
+      'phone': '18888888888',
+      'name': 'viga',
+      'sex': 'gentlemen',
+      'id': 'adssac'
+    },
+    {
+      'address': '上海',
+      'phone': '18888888888',
+      'name': 'viga',
+      'sex': 'gentlemen',
+      'id': 'qwedsa'
+    },
+    {
+      'address': '上海',
+      'phone': '18888888888',
+      'name': 'viga',
+      'sex': 'gentlemen',
+      'id': 'dsgfafa'
+    }]
   },
-  saveToDb: function(data) { //保存至数据库
+  saveToDb: function (data) { //保存至数据库
     let db = wx.cloud.database({
       env: "viga-s8qsn"
     })
@@ -82,7 +105,7 @@ App({
       console.log(err)
     })
   },
-  deleteData: function() {
+  deleteData: function () {
     let db = wx.cloud.database({
       env: "viga-s8qsn"
     })
@@ -91,6 +114,17 @@ App({
       console.log('delete:ok')
     }).catch(err => {
       console.log(err)
+    })
+  },
+  // 获取商品数据
+  getPdList: function () {
+    var that = this
+    let db = wx.cloud.database({
+      env: "viga-s8qsn"
+    })
+    let pdList = db.collection('pdList')
+    pdList.get().then(res => {
+      that.globalData.pdListData = res.data
     })
   }
 })

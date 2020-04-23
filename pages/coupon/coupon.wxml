@@ -1,0 +1,49 @@
+<!--pages/coupon/coupon.wxml-->
+<view class="wrapper">
+  <view class="top">
+    <view class="left">
+      <input type="text" placeholder='请输入兑换码' data-finalkey="{{keywords}}" bindblur="comfirmSearch" />
+    </view>
+    <view class="right" bindtap="convert">
+      <text>兑换</text>
+    </view>
+  </view>
+  <view class="countWrapper">
+    <view class="inner">
+      <view class="left">
+        <text class="num">¥<text>25</text></text>
+      </view>
+      <view class="right">
+        <text class="title">双十二25元购物红包</text>
+        <text class="des">限非超市类商品使用
+      全品类红包
+      会员、非会员通用</text>
+        <text class="time">有效期2019-12-30至2020-01-01</text>
+      </view>
+    </view>
+    <view class="inner">
+      <view class="left">
+        <text class="num">¥<text>15</text></text>
+      </view>
+      <view class="right">
+        <text class="title">双十二25元购物红包</text>
+        <text class="des">限非超市类商品使用
+      全品类红包
+      会员、非会员通用</text>
+        <text class="time">有效期2019-12-30至2020-01-01</text>
+      </view>
+    </view>
+    <view class="inner">
+      <view class="left">
+        <text class="num">¥<text>5</text></text>
+      </view>
+      <view class="right">
+        <text class="title">双十二25元购物红包</text>
+        <text class="des">限非超市类商品使用
+      全品类红包
+      会员、非会员通用</text>
+        <text class="time">有效期2019-12-30至2020-01-01</text>
+      </view>
+    </view>
+  </view>
+</view>

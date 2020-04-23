@@ -86,17 +86,43 @@ Page({
   gotoPage:function(e){
     console.log(e.currentTarget.dataset.url)
   },
-
+  goToCountPage:function(){
+    wx.navigateTo({
+      url: '../count/count',
+    })
+  },
+  goToAddress:function(){
+    wx.navigateTo({
+      url: '../address/address',
+    })
+  },
+  goToSetting:function(){
+    wx.navigateTo({
+      url: '../set/set',
+    })
+  },
+  goToCouponPage:function(){
+    wx.navigateTo({
+      url: '../coupon/coupon',
+    })
+  },
+  sharePoster:function(){
+    wx.navigateTo({
+      url: '../poster/poster',
+    })
+  },
   beComeMemberShip:function(){
     wx.showModal({
       title: '确认开通会员？',
       content: '将扣掉100w',
-      success:function(){
-        wx.showToast({
-          title: '你欠我100w',
-          icon:'success',
-          duration:2000
-        })
+      success:function(res){
+        if(res.confirm){
+          wx.showToast({
+            title: '你欠我100w',
+            icon: 'success',
+            duration: 2000
+          })
+        }
       }
     })
   },

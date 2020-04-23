@@ -1,0 +1,29 @@
+<!--pages/set/set.wxml-->
+<view class="wrapper" style="height:100vh">
+  <view class="innerWrapper">
+    <view class="item">
+      <view class="left">手机号</view>
+      <view class="phone">
+        <text style="color:#999999">188888888888</text>
+        <text class="iconfont icon-arrow" style='font-size:64rpx;line-height:80rpx;color:#dddddd'></text>
+      </view>
+
+    </view>
+    <view class="item">
+      <view class="left">隐私政策</view>
+      <text class="iconfont icon-arrow" style='font-size:64rpx;line-height:80rpx;color:#dddddd'></text>
+    </view>
+    <view class="item">
+      <view class="left">用户协议</view>
+      <text class="iconfont icon-arrow" style='font-size:64rpx;line-height:80rpx;color:#dddddd'></text>
+    </view>
+    <view class="item">
+      <view class="left">意见反馈</view>
+      <text class="iconfont icon-arrow" style='font-size:64rpx;line-height:80rpx;color:#dddddd'></text>
+    </view>
+    <view class="item">
+      <view class="left">版本号</view>
+      <text class="iconfont icon-arrow" style='font-size:64rpx;line-height:80rpx;color:#dddddd'></text>
+    </view>
+  </view>
+</view>
